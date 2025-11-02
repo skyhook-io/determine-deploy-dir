@@ -1,6 +1,6 @@
 name: 'Determine Deploy Directory'
 description: 'Calculate deployment directory based on repository structure'
-author: 'KoalaOps'
+author: 'Skyhook'
 
 branding:
   icon: 'folder'

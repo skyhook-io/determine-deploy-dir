@@ -14,7 +14,7 @@ Intelligently determines the correct deployment directory based on repository st
 
 ```yaml
 - name: Determine deployment directory
-  uses: KoalaOps/determine-deploy-dir@v1
+  uses: skyhook-io/determine-deploy-dir@v1
   id: deploy-dir
   with:
     environment: production
@@ -54,7 +54,7 @@ When `deployment_repo` differs from `current_repo`, the action sets `is_custom_p
 ### Monorepo with Explicit Path
 ```yaml
 - name: Find deploy directory
-  uses: KoalaOps/determine-deploy-dir@v1
+  uses: skyhook-io/determine-deploy-dir@v1
   id: dir
   with:
     environment: production
@@ -69,7 +69,7 @@ When `deployment_repo` differs from `current_repo`, the action sets `is_custom_p
 ### Single Service Repo
 ```yaml
 - name: Find deploy directory
-  uses: KoalaOps/determine-deploy-dir@v1
+  uses: skyhook-io/determine-deploy-dir@v1
   id: dir
   with:
     environment: staging
@@ -79,7 +79,7 @@ When `deployment_repo` differs from `current_repo`, the action sets `is_custom_p
 ### With Service Directory
 ```yaml
 - name: Find deploy directory
-  uses: KoalaOps/determine-deploy-dir@v1
+  uses: skyhook-io/determine-deploy-dir@v1
   id: dir
   with:
     environment: ${{ inputs.env }}
@@ -89,7 +89,7 @@ When `deployment_repo` differs from `current_repo`, the action sets `is_custom_p
 ### With Validation
 ```yaml
 - name: Find deploy directory
-  uses: KoalaOps/determine-deploy-dir@v1
+  uses: skyhook-io/determine-deploy-dir@v1
   id: dir
   with:
     environment: production
@@ -110,7 +110,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Determine deployment directory
-        uses: KoalaOps/determine-deploy-dir@v1
+        uses: skyhook-io/determine-deploy-dir@v1
         id: deploy-dir
         with:
           environment: ${{ inputs.environment }}
@@ -118,14 +118,14 @@ jobs:
           deployment_path: ${{ inputs.deployment_path }}
       
       - name: Update manifests
-        uses: KoalaOps/kustomize-edit@v1
+        uses: skyhook-io/kustomize-edit@v1
         with:
           overlay_dir: ${{ steps.deploy-dir.outputs.deploy_dir }}
           image: ${{ inputs.service }}
           tag: ${{ inputs.tag }}
       
       - name: Deploy
-        uses: KoalaOps/kustomize-apply@v1
+        uses: skyhook-io/kustomize-apply@v1
         with:
           overlay_dir: ${{ steps.deploy-dir.outputs.deploy_dir }}
 ```
