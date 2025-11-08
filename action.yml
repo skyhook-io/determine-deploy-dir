@@ -1,4 +1,4 @@
-name: 'Determine Deploy Directory'
+name: 'Skyhook Determine Deploy Directory'
 description: 'Calculate deployment directory based on repository structure'
 author: 'Skyhook'
 
